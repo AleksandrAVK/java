@@ -6,6 +6,7 @@ public class Task1 {
         int discount = (int)sum/10;
         int result = sum > 1_000_00 ? sum - discount : sum;
 
+
         System.out.println(result);
     }
 }
