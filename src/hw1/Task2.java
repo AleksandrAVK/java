@@ -6,7 +6,8 @@ public class Task2 {
         int firstNumber = number/10;
 
         int secondNumber = number%10;
-
+        System.out.println("firstNumber--->"+"" +firstNumber+"");
+        System.out.println("secondNumber--->"+"" +secondNumber+"");
         int sum = firstNumber + secondNumber;
         System.out.println(sum);
     }

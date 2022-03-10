@@ -5,7 +5,7 @@ public class Task2 {
         double firstNum = 15;
         double secondNum = 10;
         int operator = 9;
-        double result;
+        double result= 0;
         switch (operator) {
             case 3:
                 result = firstNum + secondNum;
@@ -27,6 +27,6 @@ public class Task2 {
                 System.out.println("Ошибка");
 
         }
-
+        System.out.println(result);
     }
 }
