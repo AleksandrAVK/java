@@ -23,11 +23,9 @@ public class Task3 {
 
         if (positiveNum > negativeNum && positiveNum > zero) {
             System.out.println("Чаще всего встречается положительное число в количестве " + positiveNum + " раз");
-        }
-        if (negativeNum > positiveNum && negativeNum > zero) {
+        } else if (negativeNum > positiveNum && negativeNum > zero) {
             System.out.println("Чаще всего встречается негативное число в количестве " + negativeNum + " раз");
-        }
-        if (zero > positiveNum && zero > negativeNum) {
+        } else if (zero > positiveNum && zero > negativeNum) {
             System.out.println("Чаще всего встречается ноль число в количестве " + zero + " раз");
         }
     }
