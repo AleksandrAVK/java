@@ -56,8 +56,8 @@ public class Application {
 
         myProduct1.addProductToList(product1);
         myProduct2.addProductToList(product2);
-        System.out.println("myProduct1" +Arrays.toString(myProduct1.printListProduct()));
-        System.out.println("myProduct2" +Arrays.toString(myProduct2.printListProduct()));
+        System.out.println("myProduct1  " + myProduct1.printListProduct());
+        System.out.println("myProduct2  " +myProduct2.printListProduct());
 
     }
 }

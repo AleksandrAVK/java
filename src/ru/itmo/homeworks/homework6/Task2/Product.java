@@ -11,11 +11,11 @@ import java.util.Objects;
 
 public class Product {
 
-    private String nameProduct = "";
-    private int proteins = 0;
-    private int fats = 0;
-    private int carbohydrates = 0;
-    private int calories = 0;
+    private String nameProduct;
+    private int proteins;
+    private int fats;
+    private int carbohydrates;
+    private int calories;
 
     public Product() {
     }
@@ -46,7 +46,7 @@ public class Product {
 
     public void setNameProduct(String nameProduct) {
 
-        if (nameProduct.length() < 1 || nameProduct == null ) {
+        if (nameProduct == null || nameProduct.length() < 1 ) {
             throw new IllegalArgumentException("имя не может быть пустым значением или содержать одну букву");
         }
         this.nameProduct = nameProduct;
@@ -114,4 +114,6 @@ public class Product {
                 ", calories= " + calories+
                 '}';
     }
+
+
 }
