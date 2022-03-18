@@ -49,16 +49,16 @@ public class Cat {
             throw new IllegalArgumentException("Значение пойманых мышей не должно быть меньше ноля или больше 100");
         }
         for ( int i = 0; i < catCaughtMice.length; i+=1) {
-            if(catCaughtMice[i] != mouse) catCaughtMice[i] = mouse;
+            if(catCaughtMice[i] == null) catCaughtMice[i] = mouse;
         }
     }
 
     public void deleteMiceFromCat(Mouse [] catCaughtMice,Mouse mouse) {
-        if (catCaughtMice.length < 0 || catCaughtMice.length > 100) {
+        if (catCaughtMice.length < 1 || catCaughtMice.length > 100) {
             throw new IllegalArgumentException("Значение пойманых мышей не должно быть меньше ноля или больше 100");
         }
         for ( int i = 0; i < catCaughtMice.length; i+=1) {
-            if(catCaughtMice[i] == mouse) catCaughtMice[i] = null;
+            if(catCaughtMice[i] != null) catCaughtMice[i] = null;
         }
     }
 
@@ -79,20 +79,25 @@ public class Cat {
     }
 
 
-    public void BattleCatVsMouse(Cat cat, Mouse mouse) {
-        if (cat.getCatSpeed() > mouse.getMouseSpeed()) cat.setCatCaughtMice(mouse);
+    public void battleCatVsMouse(Mouse mouse) {
+        if (getCatSpeed() > mouse.getMouseSpeed()) {
+            setCatCaughtMice(mouse);
+        }
     }
 
     //        Кот может напасть на другого кота и, если он больше противника (по весу),
 //        то может отобрать его мышей (если скорость мыши выше, чем скорость кота, она убежит).
-    public void catVsCat(Cat cat1, Cat cat2) {
-        if (cat1.catWeight > cat2.catWeight) {
-            for (int i = 0; i < cat2.getCatCaughtMice().length; i+=1)
+    public void catVsCat(Cat cat) {
+        if(this == cat) {
+            System.out.println("Кот напал сам на себя");
+            return;
+        }
+        if (catWeight > cat.catWeight) {
+            for (int i = 0; i < cat.getCatCaughtMice().length; i+=1)
            {
-
-                if(cat1.getCatSpeed() >  cat2.getCatCaughtMice()[i].getMouseSpeed()){
-                    cat1.setCatCaughtMice(cat2.getCatCaughtMice()[i]);
-                    cat1.deleteMiceFromCat(cat2.getCatCaughtMice(),cat2.getCatCaughtMice()[i]);
+               if(cat.getCatCaughtMice()[i] != null && getCatSpeed() >cat.getCatCaughtMice()[i].getMouseSpeed()){
+                    setCatCaughtMice(cat.getCatCaughtMice()[i]);
+                    cat.deleteMiceFromCat(getCatCaughtMice(),cat.getCatCaughtMice()[i]);
                 }
             }
 
@@ -100,7 +105,11 @@ public class Cat {
 
     }
 
-    public String printCat() {
+    public void setCatCaughtMice(Mouse[] catCaughtMice) {
+        this.catCaughtMice = catCaughtMice;
+    }
+
+    public String toString() {
         return "Cat{" +
                 "nameCat= " + nameCat + " " +
                 ", catSpeed=" + catSpeed +

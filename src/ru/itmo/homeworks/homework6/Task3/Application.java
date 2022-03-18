@@ -21,18 +21,18 @@ public class Application {
 
 
 
-        System.out.println("cat before BattleCatVsMouse " +cat1.printCat());
-        cat1.BattleCatVsMouse(cat1,mouse1);
-        System.out.println("cat after BattleCatVsMouse " +cat1.printCat());
-        cat2.BattleCatVsMouse(cat2,mouse2);
-        cat3.BattleCatVsMouse(cat3,mouse3);
+        System.out.println("cat before BattleCatVsMouse " +cat1.toString());
+        cat1.battleCatVsMouse(mouse1);
+        System.out.println("cat after BattleCatVsMouse " +cat1.toString());
+        cat2.battleCatVsMouse(mouse2);
+        cat3.battleCatVsMouse(mouse3);
 
-        System.out.println("cat before Battle CatVsCat " +cat1.printCat());
-        cat1.catVsCat(cat1,cat2);
-        System.out.println("cat after Battle CatVsCat " +cat1.printCat());
-        cat2.catVsCat(cat2,cat3);
+        System.out.println("cat before Battle CatVsCat " +cat1.toString());
+        cat1.catVsCat(cat2);
+        System.out.println("cat after Battle CatVsCat " +cat1.toString());
+        cat2.catVsCat(cat3);
 
-        System.out.println(cat1.printCat());
+        System.out.println(cat1.toString());
 
     }
 }

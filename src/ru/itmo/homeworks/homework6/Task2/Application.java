@@ -54,7 +54,7 @@ public class Application {
 
         System.out.println("AllValueProduct1" + product1.getAllProduct());
 
-        myProduct1.addProductToList(product1);
+        myProduct1.addProductToList(product1, product1,product2,product3,product4);
         myProduct2.addProductToList(product2);
         System.out.println("myProduct1  " + myProduct1.printListProduct()); // TODO выясни почему не записывает в массив все продукты, а только по одному ???
         System.out.println("myProduct2  " +myProduct2.printListProduct());

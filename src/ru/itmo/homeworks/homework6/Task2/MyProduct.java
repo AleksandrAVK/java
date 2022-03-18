@@ -24,19 +24,20 @@ public class MyProduct {
             System.out.println("productItem ++++>" + productItem);
             if (productItem.getNameProduct() == null || productItem.getNameProduct().length() < 0 ) {
                 throw new IllegalArgumentException("Имя должно быть длиннее одной буквы и не может быть null");
-            } else {
+            }
                 if(productItem.getCalories() > caloriesMaxValue || productItem.getProteins() > proteinsMaxValue || productItem.getFats() > fatsMaxValue || productItem.getCarbohydrates() > carbohydratesMaxValue ) {
                     System.out.println("Превышено максимально допустимое значение одного из показателей");
-                } else {
-                    for (int i = 0; i < listProduct.length; i += 1) {
-                        if (listProduct[i] == null) listProduct[i] = productItem.getNameProduct();
-                        if (i == listProduct.length) System.out.println("Массив заполнен");
-                        break;
-
-                    }
+                    return;
                 }
+                    for (int i = 0; i < listProduct.length; i += 1) {
+                        if (listProduct[i] == null) {
+                            listProduct[i] = productItem.getNameProduct();
+                            break;
+                        }
+                    }
 
-            }
+
+
         }
         System.out.println("listProduct" + Arrays.toString(listProduct));
     }
