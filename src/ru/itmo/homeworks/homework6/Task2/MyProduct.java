@@ -22,20 +22,19 @@ public class MyProduct {
     public void addProductToList(Product... productProperty) {
         for (Product productItem : productProperty) {
             System.out.println("productItem ++++>" + productItem);
-            if (productItem.getNameProduct() == null || productItem.getNameProduct().length() < 0 ) {
+            if (productItem.getNameProduct() == null || productItem.getNameProduct().length() < 0) {
                 throw new IllegalArgumentException("Имя должно быть длиннее одной буквы и не может быть null");
             }
-                if(productItem.getCalories() > caloriesMaxValue || productItem.getProteins() > proteinsMaxValue || productItem.getFats() > fatsMaxValue || productItem.getCarbohydrates() > carbohydratesMaxValue ) {
-                    System.out.println("Превышено максимально допустимое значение одного из показателей");
-                    return;
+            if (productItem.getCalories() > caloriesMaxValue || productItem.getProteins() > proteinsMaxValue || productItem.getFats() > fatsMaxValue || productItem.getCarbohydrates() > carbohydratesMaxValue) {
+                System.out.println("Превышено максимально допустимое значение одного из показателей");
+                return;
+            }
+            for (int i = 0; i < listProduct.length; i += 1) {
+                if (listProduct[i] == null) {
+                    listProduct[i] = productItem.getNameProduct();
+                    break;
                 }
-                    for (int i = 0; i < listProduct.length; i += 1) {
-                        if (listProduct[i] == null) {
-                            listProduct[i] = productItem.getNameProduct();
-                            break;
-                        }
-                    }
-
+            }
 
 
         }
@@ -51,7 +50,6 @@ public class MyProduct {
                 ", caloriesMaxValue=" + caloriesMaxValue +
                 '}';
     }
-
 
 
 }
