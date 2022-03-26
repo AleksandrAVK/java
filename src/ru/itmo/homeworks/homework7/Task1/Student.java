@@ -9,12 +9,6 @@ public class Student extends UnitSubject {
         super(name, age, schoolSubject);
     }
 
-    public void setKnowledgeLevel(double knowledgeLevel) {
-        if (knowledgeLevel < 0) {
-            throw new IllegalArgumentException("Уровень знаний должен быть больше ноля");
-        }
-        this.knowledgeLevel =(int) knowledgeLevel;
-    }
 
     public void studies(double skillTeacher) {
         if (knowledgeLevel < 0 || skillTeacher < 0) {

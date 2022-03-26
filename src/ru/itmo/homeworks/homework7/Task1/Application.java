@@ -1,12 +1,39 @@
 package ru.itmo.homeworks.homework7.Task1;
 
 
+import java.util.Arrays;
+
 public class Application {
+
+
     public static void main(String[] args) {
         School school = new School();
+
+        System.out.println(school);
+        String schoolName = "Sirius";
+        Director director = new Director("Ivan Vasilievich", 57);
+        Teacher teacher1 = new Teacher("Ivan1", 35, "Math");
+        Teacher teacher2 = new Teacher("Olga", 36, "Singing");
+        Teacher teacher3 = new Teacher("Petr", 37, "Painting");
+        Teacher teacher4 = new Teacher("Anastasiya", 38, "Geometry");
+        Student student1 = new Student("IvanStudent", 12, "Math");
+        Student student2 = new Student("OlgaStudent", 13, "Singing");
+        Student student3 = new Student("PetrStudent", 14, "Painting");
+        Student student4 = new Student("AnastasiyaStudent", 15, "Geometry");
+        school.addStudent(student1);
+        school.addStudent(student2);
+        school.addStudent(student3);
+        school.addStudent(student4);
+        school.addTeacher(teacher1);
+        school.addTeacher(teacher2);
+        school.addTeacher(teacher3);
+        school.addTeacher(teacher4);
+       System.out.println("teacherArr" + Arrays.toString(school.getTeachers()));
+      System.out.println("StudentArr" +Arrays.toString( school.getStudents()));
         school.skillTeacherSet();
-        school.dayOfSchool(school.getTeachers(), school.getStudents());
-        System.out.println(school.toString());
+        school.dayOfSchool(director,school.getTeachers(),school.getStudents());
+
+
     }
 
 }

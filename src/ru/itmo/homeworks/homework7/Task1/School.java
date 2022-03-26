@@ -3,31 +3,57 @@ package ru.itmo.homeworks.homework7.Task1;
 import java.util.Arrays;
 
 public class School {
-    private String schoolName = "Sirius";
-    private Director director = new Director("Ivan Vasilievich", 57);
-    Teacher teacher1 = new Teacher("Ivan1", 35, "Math");
-    Teacher teacher2 = new Teacher("Olga", 36, "Singing");
-    Teacher teacher3 = new Teacher("Petr", 37, "Painting");
-    Teacher teacher4 = new Teacher("Anastasiya", 38, "Geometry");
-    Student student1 = new Student("IvanStudent", 12, "Math");
-    Student student2 = new Student("OlgaStudent", 13, "Singing");
-    Student student3 = new Student("PetrStudent", 14, "Painting");
-    Student student4 = new Student("AnastasiyaStudent", 15, "Geometry");
-    private Teacher[] teachers = {teacher1, teacher2, teacher3, teacher4};
-    private Student[] students = {student1, student2, student3, student4};
 
-    public void skillTeacherSet() {
-        for (Teacher item : teachers) {
-            item.setSkillTeacher((int) (1 + Math.random() * 100));
+    private Teacher[] teachersArr = new Teacher[15];
+    private Student[] studentsArr = new Student[15];
+// директора, учителе и учеников выносим в application. Оставляем только массивы учителей и студентов
+// в школе создаём метод который добавляет по одному учителю в массив учителей и по одному ученику
+// в массив учеников на 16 и 17 строке оставляем просто обьявление массива
+// Изначально можно передать в шкколу массив учителей и массив учеников и вот так записать
+// teachers = тот массив с учетелями который передаём.Но метод добавления по одному учителю все-равно нужен
+// Аналогично с учениками.
+
+    public void addTeacher(Teacher teacher){
+        for (int i = 0; i < teachersArr.length; i++) {
+            if(teachersArr[i] == null){
+                teachersArr[i] = teacher;
+                break;
+            }
+        }
+    }
+    public void addStudent(Student student){
+        for (int i = 0; i < studentsArr.length; i++) {
+            if(studentsArr[i] == null){
+                studentsArr[i] = student;
+                break;
+            }
         }
     }
 
-    public void dayOfSchool(Teacher[] teacher, Student[] student) {
+    public void skillTeacherSet() {
+        for (Teacher item : teachersArr) {
+            if(item != null) item.setSkillTeacher((int) (1 + Math.random() * 100));
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "School{" +
+                "teachersArr=" + Arrays.toString(teachersArr) +
+                ", studentsArr=" + Arrays.toString(studentsArr) +
+                '}';
+    }
+
+    public void dayOfSchool(Director director, Teacher[] teacher, Student[] student) {
+//        System.out.println(" dayOfSchool teacher" + Arrays.toString(teacher));
+//        System.out.println(" dayOfSchool student" + Arrays.toString(student));
         director.startClasses();
+
         for (int i = 0; i < student.length; i += 1) {
-            for (int y = 0; y < teacher.length; y += 1) {
-                if (teacher[y].getSchoolSubject() == student[i].getSchoolSubject()) {
-                    student[i].studies(1 + Math.random() * 100);
+            for (Teacher itemTeacher : teacher) {
+                  if (itemTeacher != null && student[i] != null )
+                    if(itemTeacher.getSchoolSubject().equalsIgnoreCase(student[i].getSchoolSubject())) {
+                   student[i].studies(1 + Math.random() * 100);
                 }
             }
         }
@@ -36,31 +62,12 @@ public class School {
     }
 
     public Teacher[] getTeachers() {
-        return teachers;
+        return teachersArr;
     }
 
     public Student[] getStudents() {
-        return students;
+        return studentsArr;
     }
-
-    @Override
-    public String toString() {
-        return "School{" +
-                "schoolName='" + schoolName + '\'' +
-                ", director=" + director +
-                ", teacher1=" + teacher1 +
-                ", teacher2=" + teacher2 +
-                ", teacher3=" + teacher3 +
-                ", teacher4=" + teacher4 +
-                ", student1=" + student1 +
-                ", student2=" + student2 +
-                ", student3=" + student3 +
-                ", student4=" + student4 +
-                ", teachers=" + Arrays.toString(teachers) +
-                ", students=" + Arrays.toString(students) +
-                '}';
-    }
-
 
 }
 
